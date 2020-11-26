@@ -1,30 +1,11 @@
-import { useEffect, useState } from 'react';
-import PromotionCard from 'components/Promotion/Card/Card';
-import axios from 'axios';
+import PromotionSearch from 'components/Promotion/Search/Search';
+import UIContainer from 'components/UI/Container/Container';
 
 const PagesPromotionSearch = () => {
-  const [promotions, setPromotions] = useState([]);
-
-  useEffect(() => {
-    axios
-      .get('http://localhost:5000/promotions?_embed=comments')
-      .then((response) => {
-        setPromotions(response.data);
-      });
-  }, []);
-
   return (
-    <div
-      className="App"
-      style={{
-        maxWidth: 800,
-        margin: '30px auto',
-      }}
-    >
-      {promotions.map((promotion) => {
-        return <PromotionCard promotion={promotion} />;
-      })}
-    </div>
+    <UIContainer>
+      <PromotionSearch />
+    </UIContainer>
   );
 };
 
